@@ -9,33 +9,24 @@
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <style>
         :root {
-            --primary: #0056b3;
-            --secondary: #ff7b00;
-            --accent: #00c853;
-            --accent-light: #ff9e40;
-            --dark: #1a2a4a;
+            --primary: #ffcc00;
+            --primary-hover: #ffd93d;
+            --secondary: #1a1a1a;
+            --accent: #f5f5f5;
+            --accent-light: #fff9e6;
+            --dark: #060910;
             --light: #f8f9fa;
             --light-bg: #f8fafc;
             --gray: #6c757d;
             --gray-light: #e2e8f0;
             --danger: #dc3545;
+            --background: #fffefc;
+            --background-alt: #fff5cc;
             --shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            --shadow-hover: 0 10px 25px rgba(0, 0, 0, 0.15);
             --transition: all 0.3s ease;
-        }
-
-        /* :root {
-            --primary: #0056b3;
-            --primary-light: #007bff;
-            --primary-dark: #003a75;
-            --accent: #ff7b00;
-            --accent-light: #ff9e40;
-            --dark: #1a2a4a;
-            --light: #ffffff;
-            --light-bg: #f8fafc;
-            --gray: #6c757d;
-            --gray-light: #e2e8f0;
-            --transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-        } */
+            --border-radius: 12px;
+        }      
 
         * {
             margin: 0;
@@ -129,7 +120,7 @@
         }
 
         nav ul li a:hover {
-            color: var(--secondary);
+            color: var(--primary-hover);
         }
 
         nav ul li a::after {
@@ -139,7 +130,7 @@
             left: 0;
             width: 0;
             height: 2px;
-            background-color: var(--secondary);
+            background-color: var(--primary-hover);
             transition: var(--transition);
         }
 
@@ -185,21 +176,23 @@
         }
 
         .hero h1 span {
-            color: var(--secondary);
+            color: var(--primary);
         }
 
         .hero p {
-            font-size: 1.5rem;
-            margin-bottom: 30px;
-            max-width: 700px;
+            font-size: 1.6rem;
+            margin-bottom: 40px;
+            max-width: 800px;
             margin-left: auto;
             margin-right: auto;
+            color: #f0f0f0;
+            animation: fadeInUp 1s ease 0.2s both;
         }
 
         .countdown h3 {
             font-size: 1.3rem;
             margin-bottom: 15px;
-            color: var(--secondary);
+            color: var(--primary);
         }
 
         .timer {
@@ -227,25 +220,44 @@
 
         .cta-button {
             display: inline-block;
-            background: linear-gradient(to right, var(--secondary), #ff5500);
-            color: white;
-            padding: 18px 45px;
-            font-size: 1.3rem;
-            font-weight: 600;
+            background: linear-gradient(to right, var(--primary), #ffaa00);
+            color: var(--dark);
+            padding: 20px 50px;
+            font-size: 1.4rem;
+            font-weight: 700;
             border-radius: 50px;
             text-decoration: none;
             transition: var(--transition);
-            box-shadow: 0 5px 15px rgba(255, 123, 0, 0.4);
+            box-shadow: 0 8px 20px rgba(255, 170, 0, 0.35);
             margin-top: 20px;
             border: none;
             cursor: pointer;
             text-transform: uppercase;
             letter-spacing: 1px;
+            position: relative;
+            overflow: hidden;
+            animation: pulse 2s infinite;
         }
 
         .cta-button:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 20px rgba(255, 123, 0, 0.6);
+            transform: translateY(-5px) scale(1.05);
+            box-shadow: 0 12px 25px rgba(255, 170, 0, 0.5);
+        }
+
+        .cta-button::after {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -60%;
+            width: 20px;
+            height: 200%;
+            background: rgba(255, 255, 255, 0.4);
+            transform: rotate(25deg);
+            transition: all 0.8s;
+        }
+
+        .cta-button:hover::after {
+            left: 120%;
         }
 
         /* Benefits Section */
@@ -285,19 +297,119 @@
             margin-top: 50px;
         }
 
-        /* .benefit-card {
+        .benefit-card {
             background: white;
-            border-radius: 15px;
-            padding: 30px;
+            border-radius: var(--border-radius);
+            padding: 40px 35px;
             text-align: center;
+            transition: var(--transition);
+            position: relative;
+            overflow: hidden;
             box-shadow: var(--shadow);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            height: 100%;
+            transform: translateY(0);
+            border: 1px solid #f0f0f0;
+        }
+        .benefit-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+        }
+                .benefit-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: linear-gradient(90deg, var(--primary), #ffaa00);
+            opacity: 1;
             transition: var(--transition);
         }
 
         .benefit-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
-        } */
+            transform: translateY(-15px);
+            box-shadow: var(--shadow-hover);
+        }
+        .icon-wrapper {
+            width: 100px;
+            height: 100px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 30px;
+            position: relative;
+            background: var(--background-alt);
+            border-radius: 50%;
+        }
+        .icon-background {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, var(--primary) 0%, #ffaa00 100%);
+            border-radius: 50%;
+            opacity: 0.1;
+            transition: var(--transition);
+        }
+        .benefit-card:hover .icon-background {
+            opacity: 0.15;
+            transform: scale(1.1);
+        }
+
+        .benefit-icon {
+            font-size: 2.8rem;
+            color: var(--primary);
+            transition: var(--transition);
+        }
+
+        .benefit-card:hover .benefit-icon {
+            transform: scale(1.15);
+            color: #ffaa00;
+        }
+                .benefit-content h3 {
+            font-family: 'Poppins', sans-serif;
+            font-size: 1.6rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+            color: var(--dark);
+            position: relative;
+            padding-bottom: 15px;
+        }
+
+        .benefit-content h3::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 4px;
+            background: var(--primary);
+            border-radius: 3px;
+            transition: var(--transition);
+        }
+
+        .benefit-card:hover .benefit-content h3::after {
+            width: 90px;
+            background: #ffaa00;
+        }
+                .benefit-content p {
+            color: var(--gray);
+            font-size: 1.1rem;
+            line-height: 1.7;
+            margin-top: 10px;
+        }
+
+        .benefit-highlight {
+            display: inline-block;
+            background: linear-gradient(to right, var(--primary), #ffaa00);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            font-weight: 700;
+        }
 
         /* .benefit-icon {
             width: 80px;
@@ -324,10 +436,11 @@
 
 
         /* Seção de Benefícios - Design Moderno */
-        .benefits-section {
-            padding: 100px 0;
+         .benefits-section {
+            padding: 120px 0;
             position: relative;
             overflow: hidden;
+            background: var(--light);
         }
 
         .geometric-pattern {
@@ -336,7 +449,7 @@
             left: -50px;
             width: 300px;
             height: 300px;
-            background: linear-gradient(135deg, rgba(0, 86, 179, 0.05) 0%, transparent 70%);
+            background: linear-gradient(135deg, rgba(255, 204, 0, 0.05) 0%, transparent 70%);
             border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%;
             z-index: 0;
         }
@@ -347,11 +460,10 @@
             right: -100px;
             width: 400px;
             height: 400px;
-            background: linear-gradient(45deg, rgba(255, 123, 0, 0.03) 0%, transparent 70%);
+            background: radial-gradient(circle, rgba(255, 170, 0, 0.05) 0%, rgba(255, 170, 0, 0) 70%);
             border-radius: 50%;
             z-index: 0;
         }
-
         .section-header {
             text-align: center;
             margin-bottom: 80px;
@@ -416,20 +528,20 @@
         }
 
         .benefit-card {
-            background: var(--light);
-            border-radius: 20px;
+            background: white;
+            border-radius: var(--border-radius);
             padding: 40px 35px;
             text-align: center;
             transition: var(--transition);
             position: relative;
             overflow: hidden;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
-            border: 1px solid var(--gray-light);
+            box-shadow: var(--shadow);
             display: flex;
             flex-direction: column;
             align-items: center;
             height: 100%;
             transform: translateY(0);
+            border: 1px solid #f0f0f0;
         }
 
         .benefit-card::before {
@@ -438,101 +550,22 @@
             top: 0;
             left: 0;
             width: 100%;
-            height: 4px;
-            background: linear-gradient(90deg, #0056b3, #ff7b00);
-            opacity: 0;
+            height: 5px;
+            background: linear-gradient(90deg, var(--primary), #ffaa00);
+            opacity: 1;
             transition: var(--transition);
         }
 
         .benefit-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1);
-            border-color: rgba(0, 86, 179, 0.2);
+            transform: translateY(-15px);
+            box-shadow: var(--shadow-hover);
+            border-color: rgba(255, 204, 0, 0.3);
         }
 
         .benefit-card:hover::before {
             opacity: 1;
         }
 
-        .icon-wrapper {
-            width: 90px;
-            height: 90px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin-bottom: 30px;
-            position: relative;
-        }
-
-        .icon-background {
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(135deg,  #007bff 0%, #003a75 100%);
-            border-radius: 50%;
-            opacity: 0.1;
-            transition: var(--transition);
-        }
-
-        .benefit-card:hover .icon-background {
-            opacity: 0.15;
-            transform: scale(1.1);
-        }
-
-        .benefit-icon {
-            font-size: 2.5rem;
-            color: #0056b3;
-            transition: var(--transition);
-        }
-
-        .benefit-card:hover .benefit-icon {
-            transform: scale(1.15);
-            color: #003a75;
-        }
-
-        .benefit-content h3 {
-            font-family: 'Poppins', sans-serif;
-            font-size: 1.5rem;
-            font-weight: 700;
-            margin-bottom: 20px;
-            color: var(--dark);
-            position: relative;
-            padding-bottom: 15px;
-        }
-
-        .benefit-content h3::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 50px;
-            height: 3px;
-            background: var(--primary);
-            border-radius: 3px;
-            transition: var(--transition);
-        }
-
-        .benefit-card:hover .benefit-content h3::after {
-            width: 70px;
-            background: var(--accent-light);
-        }
-
-        .benefit-content p {
-            color: var(--gray);
-            font-size: 1.05rem;
-            line-height: 1.7;
-            margin-top: 10px;
-        }
-
-        .benefit-highlight {
-            display: inline-block;
-            background: linear-gradient(to right, var(--primary), #ff7b00);
-            -webkit-background-clip: text;
-            background-clip: text;
-            color: transparent;
-            font-weight: 600;
-        }
 
         /* Responsividade */
         @media (max-width: 992px) {
@@ -587,8 +620,8 @@
 
         /* Lead Form Section */
         .lead-section {
-            padding: 100px 0;
-            background: linear-gradient(135deg, var(--primary), var(--dark));
+            padding: 120px 0;
+            background: linear-gradient(101deg, var(--primary), #ffb700);
             color: white;
             position: relative;
             overflow: hidden;
@@ -601,7 +634,7 @@
             left: -50%;
             width: 200%;
             height: 200%;
-            background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0) 70%);
+            background: radial-gradient(circle, rgba(255,255,255,0.15) 0%, rgba(255,255,255,0) 70%);
             transform: rotate(30deg);
             z-index: 0;
         }
@@ -611,19 +644,34 @@
             z-index: 1;
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 50px;
+            gap: 60px;
             align-items: center;
+        }
+        .lead-content {
+            padding: 20px;
         }
 
         .lead-content h2 {
             font-family: 'Poppins', sans-serif;
-            font-size: 2.5rem;
-            margin-bottom: 20px;
+            font-size: 2.8rem;
+            margin-bottom: 25px;
             line-height: 1.3;
+            color: var(--secondary);
         }
 
         .lead-content h2 span {
-            color: var(--secondary);
+            color: white;
+            background: var(--secondary);
+            padding: 0 10px;
+            border-radius: 8px;
+            display: inline-block;
+        }
+
+        .lead-content p {
+            font-size: 1.3rem;
+            margin-bottom: 30px;
+            color: #333;
+            font-weight: 500;
         }
 
         .lead-content ul {
@@ -632,10 +680,12 @@
         }
 
         .lead-content ul li {
-            margin-bottom: 15px;
-            padding-left: 30px;
+            margin-bottom: 18px;
+            padding-left: 35px;
             position: relative;
-            font-size: 1.1rem;
+            font-size: 1.15rem;
+            color: #333;
+            font-weight: 500;
         }
 
         .lead-content ul li::before {
@@ -644,8 +694,9 @@
             font-weight: 900;
             position: absolute;
             left: 0;
-            top: 0;
-            color: var(--accent);
+            top: 3px;
+            color: var(--primary);
+            font-size: 1.3rem;
         }
 
         .lead-form {
@@ -700,29 +751,53 @@
 
         .form-button {
             width: 100%;
-            padding: 18px;
-            background: linear-gradient(to right, var(--secondary), #ff5500);
+            padding: 20px;
+            background: linear-gradient(to right, var(--secondary), #333);
             color: white;
             border: none;
-            border-radius: 8px;
-            font-size: 1.1rem;
-            font-weight: 600;
+            border-radius: 10px;
+            font-size: 1.2rem;
+            font-weight: 700;
             cursor: pointer;
             transition: var(--transition);
-            margin-top: 10px;
+            margin-top: 15px;
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
         }
 
         .form-button:hover {
-            background: linear-gradient(to right, #ff5500, var(--secondary));
+            background: linear-gradient(to right, #333, var(--secondary));
             transform: translateY(-3px);
-            box-shadow: 0 5px 15px rgba(255, 123, 0, 0.4);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        .form-button::after {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -60%;
+            width: 20px;
+            height: 200%;
+            background: rgba(255, 255, 255, 0.25);
+            transform: rotate(25deg);
+            transition: all 0.8s;
+            z-index: -1;
+        }
+
+        .form-button:hover::after {
+            left: 120%;
         }
 
         .form-note {
             text-align: center;
             color: var(--gray);
-            font-size: 0.9rem;
-            margin-top: 20px;
+            font-size: 1rem;
+            margin-top: 25px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
         }
 
         /* Testimonials */
@@ -798,7 +873,7 @@
         /* FAQ Section */
         .faq {
             padding: 100px 0;
-            background: linear-gradient(135deg, #f0f4f8, #e2e8f0);
+            background: linear-gradient(135deg, #f5f5f5, #e9ecef);
         }
 
         .faq-container {
@@ -876,7 +951,7 @@
             font-family: 'Poppins', sans-serif;
             font-size: 2rem;
             font-weight: 700;
-            margin-bottom: 20px;
+            /* margin-bottom: 20px; */
             display: inline-block;
         }
 
@@ -913,19 +988,20 @@
         }
 
         .footer-links h3 {
-            font-size: 1.3rem;
-            margin-bottom: 25px;
+            font-size: 1.5rem;
+            margin-bottom: 30px;
             position: relative;
+            padding-bottom: 15px;
         }
 
         .footer-links h3::after {
             content: '';
             position: absolute;
-            bottom: -10px;
+            bottom: 0;
             left: 0;
             width: 50px;
-            height: 3px;
-            background: var(--secondary);
+            height: 4px;
+            background: var(--primary);
         }
 
         .footer-links ul {
@@ -933,18 +1009,31 @@
         }
 
         .footer-links ul li {
-            margin-bottom: 12px;
+            margin-bottom: 15px;
         }
 
         .footer-links ul li a {
             color: rgba(255, 255, 255, 0.8);
             text-decoration: none;
             transition: var(--transition);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .footer-links ul li a i {
+            color: var(--primary);
+            font-size: 0.9rem;
+            transition: var(--transition);
         }
 
         .footer-links ul li a:hover {
-            color: var(--secondary);
+            color: var(--primary);
             padding-left: 5px;
+        }
+
+        .footer-links ul li a:hover i {
+            transform: translateX(5px);
         }
 
         .contact-info {
@@ -956,10 +1045,15 @@
         .contact-item {
             display: flex;
             gap: 15px;
+            padding: 5px;
         }
 
+        .contact-item:first-child {
+            margin-top: 10px;
+        }        
+
         .contact-item i {
-            color: var(--secondary);
+            color: var(--accent-light);
             font-size: 1.2rem;
         }
 
@@ -1146,8 +1240,9 @@
     <header class="">
         <div class="container header-container liquid-glass">
             <div class="logo">
-                <i class="fas fa-shield-alt"></i>
-                <span style="color: #969696;">Liga</span>
+                <!-- <i class="fas fa-shield-alt"></i> -->
+                 <img src="./img/Logo Preto e Amarelo.png" alt="" srcset="" style="width: 150px; height: 80px;">
+                <!-- <span style="color: #969696;">Liga</span> -->
             </div>
             <button class="mobile-menu-btn" id="menuToggle">
                 <i class="fas fa-bars"></i>
@@ -1356,11 +1451,11 @@
                 <div class="contact-info">
                     <div class="contact-item">
                         <i class="fas fa-phone"></i>
-                        <div class="contact-text">(11) 98765-4321</div>
+                        <div class="contact-text">(11) 97122-5580</div>
                     </div>
                     <div class="contact-item">
                         <i class="fas fa-envelope"></i>
-                        <div class="contact-text">contato@ligaprotecaoveicular.com.br</div>
+                        <div class="contact-text">guilhermesantospineda@gmail.com</div>
                     </div>
                     <div class="contact-item">
                         <i class="fas fa-clock"></i>
@@ -1536,38 +1631,37 @@
             <div class="footer-container">
                 <div class="footer-about">
                     <div class="footer-logo">
-                        <i class="fas fa-shield-alt"></i>
-                        LIGA
+                        <img src="./img/Logo Branco e Amarelo.png" alt="" srcset="" style="width: 204px; height: 107px;">
                     </div>
                     <p>Solução inteligente em proteção veicular que oferece segurança e economia para você e seu veículo.</p>
                     <div class="social-icons">
                         <a href="#"><i class="fab fa-facebook-f"></i></a>
                         <a href="#"><i class="fab fa-instagram"></i></a>
-                        <a href="#"><i class="fab fa-whatsapp"></i></a>
+                        <a href="#" onclick="abrirWhatsApp()"><i class="fab fa-whatsapp"></i></a>
                         <a href="#"><i class="fab fa-youtube"></i></a>
                     </div>
                 </div>
                 
-                <div class="footer-links">
+              <div class="footer-links">
                     <h3>Links Rápidos</h3>
                     <ul>
-                        <li><a href="#inicio">Início</a></li>
-                        <li><a href="#beneficios">Benefícios</a></li>
-                        <li><a href="#oferta">Oferta Especial</a></li>
-                        <li><a href="#depoimentos">Depoimentos</a></li>
-                        <li><a href="#duvidas">Dúvidas</a></li>
+                        <li><a href="#inicio"><i class="fas fa-chevron-right"></i> Início</a></li>
+                        <li><a href="#beneficios"><i class="fas fa-chevron-right"></i> Benefícios</a></li>
+                        <li><a href="#oferta"><i class="fas fa-chevron-right"></i> Oferta Especial</a></li>
+                        <li><a href="#depoimentos"><i class="fas fa-chevron-right"></i> Depoimentos</a></li>
+                        <li><a href="#duvidas"><i class="fas fa-chevron-right"></i> Dúvidas</a></li>
                     </ul>
                 </div>
                 
                 <div class="footer-links">
                     <h3>Coberturas</h3>
                     <ul>
-                        <li><a href="#">Colisão</a></li>
-                        <li><a href="#">Incêndio</a></li>
-                        <li><a href="#">Roubo e Furto</a></li>
-                        <li><a href="#">Assistência 24h</a></li>
-                        <li><a href="#">Vidros</a></li>
-                        <li><a href="#">Carro Reserva</a></li>
+                        <li><a href="#"><i class="fas fa-chevron-right"></i> Colisão</a></li>
+                        <li><a href="#"><i class="fas fa-chevron-right"></i> Incêndio</a></li>
+                        <li><a href="#"><i class="fas fa-chevron-right"></i> Roubo e Furto</a></li>
+                        <li><a href="#"><i class="fas fa-chevron-right"></i> Assistência 24h</a></li>
+                        <li><a href="#"><i class="fas fa-chevron-right"></i> Vidros</a></li>
+                        <li><a href="#"><i class="fas fa-chevron-right"></i> Carro Reserva</a></li>
                     </ul>
                 </div>
                 
@@ -1576,7 +1670,7 @@
                     <div class="contact-info">
                         <div class="contact-item">
                             <i class="fas fa-map-marker-alt"></i>
-                            <div class="contact-text">R. Joaquim Felix Ribeiro, 198<br>Osasco, SP</div>
+                            <div class="contact-text">Osasco - São Paulo</div>
                         </div>
                         <div class="contact-item">
                             <i class="fas fa-phone"></i>
@@ -1595,7 +1689,7 @@
             </div>
             
             <div class="footer-bottom">
-                <p>&copy; 2025 Liga Proteção Veicular. Todos os direitos reservados. CNPJ: 12.345.678/0001-99</p>
+                <p>&copy; 2025 Liga Proteção Veicular. Todos os direitos reservados. CNPJ: 51.643.749/0001-98</p>
             </div>
         </div>
     </footer>
@@ -1649,22 +1743,45 @@
         const heroCta = document.getElementById('heroCta');
         
         function submitForm() {
-            const name = document.getElementById('name').value;
-            
-            // Show success message
-            Swal.fire({
-                title: 'Parabéns, ' + name + '!',
-                text: 'Sua simulação foi enviada com sucesso! Em breve um especialista entrará em contato.',
-                icon: 'success',
-                confirmButtonText: 'OK',
-                confirmButtonColor: '#0056b3'
+            const formData = {
+                name: document.getElementById('name').value,
+                phone: document.getElementById('phone').value,
+                email: document.getElementById('email').value,
+                vehicle: document.getElementById('vehicle').value,
+                year: document.getElementById('year').value
+            };
+
+            fetch("https://script.google.com/macros/s/AKfycbw46geaC99kPpF5vp_jFkqPQuZSF4mbgdWL3Ca3GqEh_oEyVymTb6jhGsIEaDgEMD--oA/exec", {
+                method: "POST",
+                body: JSON.stringify(formData),
+                headers: {
+                    "Content-Type": "application/json"
+                }
+            })
+            .then(res => res.json())
+            .then(data => {
+                // Mostrar alerta de sucesso
+                Swal.fire({
+                    title: 'Parabéns, ' + formData.name + '!',
+                    text: 'Sua simulação foi enviada com sucesso! Em breve um especialista entrará em contato.',
+                    icon: 'success',
+                    confirmButtonText: 'OK',
+                    confirmButtonColor: '#0056b3'
+                });
+
+                leadForm.reset();
+                document.getElementById('oferta').scrollIntoView({ behavior: 'smooth' });
+            })
+            .catch(error => {
+                console.error("Erro ao enviar dados:", error);
+                Swal.fire({
+                    title: 'Erro!',
+                    text: 'Ocorreu um problema ao enviar sua simulação. Tente novamente. Se o problema continuar, entre em contato pelo WhatsApp',
+                    icon: 'error',
+                    confirmButtonText: 'OK',
+                    confirmButtonColor: '#dc3545'
+                });
             });
-            
-            // Reset form
-            leadForm.reset();
-            
-            // Scroll to form for confirmation
-            document.getElementById('oferta').scrollIntoView({ behavior: 'smooth' });
         }
         
         leadForm.addEventListener('submit', (e) => {
@@ -1680,19 +1797,28 @@
         const phoneInput = document.getElementById('phone');
         
         phoneInput.addEventListener('input', function(e) {
-            const value = e.target.value.replace(/\D/g, '');
-            const formattedValue = formatPhoneNumber(value);
-            e.target.value = formattedValue;
-        });
-        
-        function formatPhoneNumber(value) {
-            if (!value) return '';
+            let value = e.target.value.replace(/\D/g, '');
             
-            if (value.length <= 10) {
-                return value.replace(/(\d{0})(\d{0})(\d{4})(\d{0,4})/, "($1$2) $3-$4");
-            } else {
-                return value.replace(/(\d{0})(\d{0})(\d{5})(\d{0,4})/, "($1$2) $3-$4");
+            if (value.length > 11) {
+                value = value.substring(0, 11);
             }
+            
+            if (value.length > 2 && value.length <= 6) {
+                value = value.replace(/(\d{2})(\d{0,4})/, "($1) $2");
+            } else if (value.length > 6 && value.length <= 10) {
+                value = value.replace(/(\d{2})(\d{4})(\d{0,4})/, "($1) $2-$3");
+            } else if (value.length > 10) {
+                value = value.replace(/(\d{2})(\d{5})(\d{0,4})/, "($1) $2-$3");
+            }
+            
+            e.target.value = value;
+        });
+
+        function abrirWhatsApp() {
+            const numero = '5511971225580';
+            const mensagem = encodeURIComponent('Olá, vim pelo site da Liga Proteção Veicular');
+            const url = `https://wa.me/${numero}?text=${mensagem}`;
+            window.open(url, '_blank');
         }
         
         // Smooth Scrolling for Anchor Links
