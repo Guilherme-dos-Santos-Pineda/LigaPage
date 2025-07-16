@@ -1682,50 +1682,49 @@
         const leadForm = document.getElementById('leadForm');
         const heroCta = document.getElementById('heroCta');
         
-    function submitForm() {
-        const formData = {
-            name: document.getElementById('name').value.trim(),
-            phone: document.getElementById('phone').value.trim(),
-            email: document.getElementById('email').value.trim(),
-            vehicle: document.getElementById('vehicle').value.trim(),
-            year: document.getElementById('year').value.trim()
-        };
+function submitForm() {
+    const formData = {
+        name: document.getElementById('name').value.trim(),
+        phone: document.getElementById('phone').value.trim(),
+        email: document.getElementById('email').value.trim(),
+        vehicle: document.getElementById('vehicle').value.trim(),
+        year: document.getElementById('year').value.trim()
+    };
 
-        fetch("https://script.google.com/macros/s/AKfycbybKmlwcCpqikYZkPuM75mjV4yNRErBT4qwvyaTEUA3XBZxNvU_jJWa73pXcfQL07ogdA/exec", {
-            method: "POST",
-            body: JSON.stringify(formData),
-            headers: {
-                "Content-Type": "application/json"
-            }
-        })
-        .then(res => res.json())
-        .then(data => {
-            if (data.result === "success") {
-                Swal.fire({
-                    title: 'Parabéns, ' + formData.name + '!',
-                    text: 'Sua simulação foi enviada com sucesso! Em breve um especialista entrará em contato.',
-                    icon: 'success',
-                    confirmButtonText: 'OK',
-                    confirmButtonColor: '#0056b3'
-                });
-
-                leadForm.reset();
-                document.getElementById('oferta')?.scrollIntoView({ behavior: 'smooth' });
-            } else {
-                throw new Error(data.error || "Erro inesperado");
-            }
-        })
-        .catch(error => {
-            console.error("Erro ao enviar dados:", error);
-            Swal.fire({
-                title: 'Erro!',
-                text: 'Ocorreu um problema ao enviar sua simulação. Tente novamente. Se o problema continuar, entre em contato pelo WhatsApp.',
-                icon: 'error',
-                confirmButtonText: 'OK',
-                confirmButtonColor: '#dc3545'
-            });
+    fetch("https://script.google.com/macros/s/AKfycbybKmlwcCpqikYZkPuM75mjV4yNRErBT4qwvyaTEUA3XBZxNvU_jJWa73pXcfQL07ogdA/exec", {
+        method: "POST",
+        mode: "no-cors", // IMPORTANTE para evitar erro CORS no navegador
+        body: JSON.stringify(formData),
+        headers: {
+            "Content-Type": "application/json"
+        }
+    })
+    .then(() => {
+        // Como não podemos ler a resposta no modo no-cors,
+        // presumimos sucesso aqui
+        Swal.fire({
+            title: 'Parabéns, ' + formData.name + '!',
+            text: 'Sua simulação foi enviada com sucesso! Em breve um especialista entrará em contato.',
+            icon: 'success',
+            confirmButtonText: 'OK',
+            confirmButtonColor: '#0056b3'
         });
-    }
+
+        leadForm.reset();
+        document.getElementById('oferta')?.scrollIntoView({ behavior: 'smooth' });
+    })
+    .catch(error => {
+        console.error("Erro ao enviar dados:", error);
+        Swal.fire({
+            title: 'Erro!',
+            text: 'Ocorreu um problema ao enviar sua simulação. Tente novamente. Se o problema continuar, entre em contato pelo WhatsApp.',
+            icon: 'error',
+            confirmButtonText: 'OK',
+            confirmButtonColor: '#dc3545'
+        });
+    });
+}
+
 
     leadForm.addEventListener('submit', (e) => {
         e.preventDefault();
