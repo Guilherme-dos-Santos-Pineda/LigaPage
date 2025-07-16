@@ -110,7 +110,7 @@
         }
 
         nav ul li a {
-            color: rgb(170, 170, 170);
+            color: rgb(238, 238, 238);
             text-decoration: none;
             font-weight: 500;
             transition: var(--transition);
@@ -1107,7 +1107,7 @@
         }
         @media (max-width: 860px) {
             .header-container {
-                max-width: 700px;
+                max-width: 740px;
             }
         }
         @media (max-width: 768px) {
@@ -1133,7 +1133,7 @@
             
             .mobile-menu-btn {
                 display: block;
-                margin-left: 390px;
+                margin-left: 350px;
             }
 
             /* .header-container{
@@ -1177,7 +1177,7 @@
                 max-width: 570px;
             }
             .mobile-menu-btn {
-                margin-left: 370px;
+                margin-left: 350px;
             }
         }
         @media (max-width: 576px) {
@@ -1208,7 +1208,7 @@
             }
 
             .mobile-menu-btn {
-                margin-left: 221px;
+                margin-left: 211px;
             }
             .header-container {
                 max-width: 420px;
@@ -1218,7 +1218,7 @@
 
         @media (max-width: 450px) {
             .mobile-menu-btn {
-                margin-left: 220px;
+                margin-left: 180px;
             }
             .header-container{
                 max-width: 400px;
@@ -1227,7 +1227,7 @@
 
         @media (max-width: 391px) {
             .mobile-menu-btn {
-                margin-left: 157px;
+                margin-left: 137px;
             }
             .header-container{
                 max-width: 350px;
@@ -1241,7 +1241,7 @@
         <div class="container header-container liquid-glass">
             <div class="logo">
                 <!-- <i class="fas fa-shield-alt"></i> -->
-                 <img src="./img/Logo Preto e Amarelo.png" alt="" srcset="" style="width: 150px; height: 80px;">
+                 <img src="./img/Logo Preto e Amarelo.png" alt="" srcset="" style=" height: 80px;">
                 <!-- <span style="color: #969696;">Liga</span> -->
             </div>
             <button class="mobile-menu-btn" id="menuToggle">
@@ -1290,66 +1290,6 @@
             <button class="cta-button" id="heroCta">QUERO ECONOMIZAR AGORA!</button>
         </div>
     </section>
-
-    <!-- Benefits Section -->
-    <!-- <section class="benefits" id="beneficios">
-        <div class="container">
-            <div class="section-title">
-                <h2>Por que escolher a <span>Liga Proteção Veicular</span>?</h2>
-                <p>Oferecemos a melhor relação custo-benefício do mercado com coberturas completas para seu veículo</p>
-            </div>
-            
-            <div class="benefits-grid">
-                <div class="benefit-card">
-                    <div class="benefit-icon">
-                        <i class="fas fa-money-bill-wave"></i>
-                    </div>
-                    <h3>Economia Inteligente</h3>
-                    <p>Até 70% mais barato que um seguro tradicional, com coberturas equivalentes ou superiores.</p>
-                </div>
-                
-                <div class="benefit-card">
-                    <div class="benefit-icon">
-                        <i class="fas fa-phone-alt"></i>
-                    </div>
-                    <h3>Assistência 24h</h3>
-                    <p>Socorro em todo o território nacional a qualquer hora, todos os dias da semana.</p>
-                </div>
-                
-                <div class="benefit-card">
-                    <div class="benefit-icon">
-                        <i class="fas fa-car-crash"></i>
-                    </div>
-                    <h3>Cobertura Completa</h3>
-                    <p>Colisão, incêndio, roubo, vidros, carro reserva e muito mais para sua tranquilidade.</p>
-                </div>
-                
-                <div class="benefit-card">
-                    <div class="benefit-icon">
-                        <i class="fas fa-tools"></i>
-                    </div>
-                    <h3>Rede Credenciada</h3>
-                    <p>Mais de 5.000 oficinas mecânicas em todo o Brasil para atendimento rápido e especializado.</p>
-                </div>
-                
-                <div class="benefit-card">
-                    <div class="benefit-icon">
-                        <i class="fas fa-shield-alt"></i>
-                    </div>
-                    <h3>Proteção Jurídica</h3>
-                    <p>Suporte completo em questões legais relacionadas ao seu veículo sem custos adicionais.</p>
-                </div>
-                
-                <div class="benefit-card">
-                    <div class="benefit-icon">
-                        <i class="fas fa-bolt"></i>
-                    </div>
-                    <h3>Sem Burocracia</h3>
-                    <p>Contratação simples e rápida, sem exames médicos ou avaliações demoradas do veículo.</p>
-                </div>
-            </div>
-        </div>
-    </section> -->
 
     <!-- Benefits Section -2 -->
     <section class="benefits-section">
@@ -1742,25 +1682,25 @@
         const leadForm = document.getElementById('leadForm');
         const heroCta = document.getElementById('heroCta');
         
-        function submitForm() {
-            const formData = {
-                name: document.getElementById('name').value,
-                phone: document.getElementById('phone').value,
-                email: document.getElementById('email').value,
-                vehicle: document.getElementById('vehicle').value,
-                year: document.getElementById('year').value
-            };
+    function submitForm() {
+        const formData = {
+            name: document.getElementById('name').value.trim(),
+            phone: document.getElementById('phone').value.trim(),
+            email: document.getElementById('email').value.trim(),
+            vehicle: document.getElementById('vehicle').value.trim(),
+            year: document.getElementById('year').value.trim()
+        };
 
-            fetch("https://script.google.com/macros/s/AKfycbw46geaC99kPpF5vp_jFkqPQuZSF4mbgdWL3Ca3GqEh_oEyVymTb6jhGsIEaDgEMD--oA/exec", {
-                method: "POST",
-                body: JSON.stringify(formData),
-                headers: {
-                    "Content-Type": "application/json"
-                }
-            })
-            .then(res => res.json())
-            .then(data => {
-                // Mostrar alerta de sucesso
+        fetch("https://script.google.com/macros/s/AKfycbw46geaC99kPpF5vp_jFkqPQuZSF4mbgdWL3Ca3GqEh_oEyVymTb6jhGsIEaDgEMD--oA/exec", {
+            method: "POST",
+            body: JSON.stringify(formData),
+            headers: {
+                "Content-Type": "application/json"
+            }
+        })
+        .then(res => res.json())
+        .then(data => {
+            if (data.result === "success") {
                 Swal.fire({
                     title: 'Parabéns, ' + formData.name + '!',
                     text: 'Sua simulação foi enviada com sucesso! Em breve um especialista entrará em contato.',
@@ -1770,24 +1710,27 @@
                 });
 
                 leadForm.reset();
-                document.getElementById('oferta').scrollIntoView({ behavior: 'smooth' });
-            })
-            .catch(error => {
-                console.error("Erro ao enviar dados:", error);
-                Swal.fire({
-                    title: 'Erro!',
-                    text: 'Ocorreu um problema ao enviar sua simulação. Tente novamente. Se o problema continuar, entre em contato pelo WhatsApp',
-                    icon: 'error',
-                    confirmButtonText: 'OK',
-                    confirmButtonColor: '#dc3545'
-                });
+                document.getElementById('oferta')?.scrollIntoView({ behavior: 'smooth' });
+            } else {
+                throw new Error(data.error || "Erro inesperado");
+            }
+        })
+        .catch(error => {
+            console.error("Erro ao enviar dados:", error);
+            Swal.fire({
+                title: 'Erro!',
+                text: 'Ocorreu um problema ao enviar sua simulação. Tente novamente. Se o problema continuar, entre em contato pelo WhatsApp.',
+                icon: 'error',
+                confirmButtonText: 'OK',
+                confirmButtonColor: '#dc3545'
             });
-        }
-        
-        leadForm.addEventListener('submit', (e) => {
-            e.preventDefault();
-            submitForm();
         });
+    }
+
+    leadForm.addEventListener('submit', (e) => {
+        e.preventDefault();
+        submitForm();
+    });
         
         heroCta.addEventListener('click', () => {
             document.getElementById('oferta').scrollIntoView({ behavior: 'smooth' });
